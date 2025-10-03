@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Container,
+  Grid,
   TextField,
   Typography
 } from '@mui/material'
@@ -33,113 +34,118 @@ const Checkout = () => {
       {/* Stepper */}
       <StepperPage activeStep={1} />
 
-      <Box className='checkout'>
-        <form onSubmit={handleSubmit(ValidateSubmit)}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          px: { xs: 2, sm: 0 }
+        }}
+      >
+        <form onSubmit={handleSubmit(ValidateSubmit)} style={{ width: '100%' }}>
           <Card
             variant='outlined'
-            className='form-container'
             sx={{
               p: { xs: 2, sm: 3 },
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-              maxWidth: '600px',
-              mx: 'auto'
+              width: '100%',
+              maxWidth: 600,
+              mx: 'auto',
+              borderRadius: 2,
+              boxShadow: 3
             }}
           >
-            <Typography
-              variant='h6'
-              textAlign='center'
-              sx={{ mb: 1 }}
-            >
+            <Typography variant='h6' textAlign='center' sx={{ mb: 2 }}>
               Billing Details
             </Typography>
 
-            {/* Name */}
-            <TextField
-              {...register('Name', { required: 'Enter Name' })}
-              error={!!errors.Name}
-              label='Name'
-              fullWidth
-            />
+            <Grid container spacing={2}>
+              {/* Name */}
+              <Grid item xs={12}>
+                <TextField
+                  {...register('Name', { required: 'Enter Name' })}
+                  error={!!errors.Name}
+                  label='Name'
+                  fullWidth
+                />
+              </Grid>
 
-            {/* Mobile */}
-            <TextField
-              {...register('mobile', { required: 'Enter mobile' })}
-              error={!!errors.mobile}
-              label='Mobile'
-              type='number'
-              fullWidth
-            />
+              {/* Mobile */}
+              <Grid item xs={12}>
+                <TextField
+                  {...register('mobile', { required: 'Enter mobile' })}
+                  error={!!errors.mobile}
+                  label='Mobile'
+                  type='number'
+                  fullWidth
+                />
+              </Grid>
 
-            {/* Street */}
-            <TextField
-              {...register('Address', { required: 'Enter Address' })}
-              error={!!errors.Address}
-              label='Street'
-              fullWidth
-            />
+              {/* Street */}
+              <Grid item xs={12}>
+                <TextField
+                  {...register('Address', { required: 'Enter Address' })}
+                  error={!!errors.Address}
+                  label='Street'
+                  fullWidth
+                />
+              </Grid>
 
-            {/* City */}
-            <TextField
-              {...register('city', { required: 'Enter City' })}
-              error={!!errors.city}
-              label='City'
-              fullWidth
-            />
+              {/* City */}
+              <Grid item xs={12}>
+                <TextField
+                  {...register('city', { required: 'Enter City' })}
+                  error={!!errors.city}
+                  label='City'
+                  fullWidth
+                />
+              </Grid>
 
-            {/* State + Postal in a row */}
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: 2
-              }}
-            >
-              <TextField
-                {...register('State', { required: 'Enter State' })}
-                error={!!errors.State}
-                label='State'
-                fullWidth
-              />
-              <TextField
-                {...register('Pincode', { required: 'Enter Pincode' })}
-                error={!!errors.Pincode}
-                label='Postal'
-                type='number'
-                fullWidth
-              />
-            </Box>
+              {/* State */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  {...register('State', { required: 'Enter State' })}
+                  error={!!errors.State}
+                  label='State'
+                  fullWidth
+                />
+              </Grid>
 
-            {/* Buttons */}
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                justifyContent: 'center',
-                gap: 2,
-                mt: 2
-              }}
-            >
-              <Button
-                variant='contained'
-                component={Link}
-                to='/cart'
-                fullWidth={true}
-                sx={{ textTransform: 'none' }}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant='outlined'
-                type='submit'
-                startIcon={<PaidIcon />}
-                fullWidth={true}
-                sx={{ textTransform: 'none' }}
-              >
-                Checkout Now
-              </Button>
-            </Box>
+              {/* Postal */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  {...register('Pincode', { required: 'Enter Pincode' })}
+                  error={!!errors.Pincode}
+                  label='Postal'
+                  type='number'
+                  fullWidth
+                />
+              </Grid>
+
+              {/* Buttons */}
+              <Grid item xs={12} sm={6}>
+                <Button
+                  variant='contained'
+                  component={Link}
+                  to='/cart'
+                  fullWidth
+                  sx={{ textTransform: 'none' }}
+                >
+                  Cancel
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Button
+                  variant='outlined'
+                  type='submit'
+                  startIcon={<PaidIcon />}
+                  fullWidth
+                  sx={{ textTransform: 'none' }}
+                >
+                  Checkout Now
+                </Button>
+              </Grid>
+            </Grid>
           </Card>
         </form>
       </Box>

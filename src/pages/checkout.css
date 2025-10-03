@@ -1,18 +1,27 @@
-.checkout .form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
-    gap: 15px;
-    width: 450px;
-    padding:20px 0;
+.checkout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;            /* take full width */
+  padding: 1rem;          /* add spacing */
+  box-sizing: border-box;
+  overflow-x: hidden;     /* prevent horizontal scroll */
 }
-.checkout form input{
-    width: 300px;
+
+.checkout .form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  gap: 15px;
+  width: 100%;             /* responsive width */
+  max-width: 500px;        /* cap on larger screens */
+  padding: 20px;
+  box-sizing: border-box;
 }
-.checkout{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.checkout form input {
+  width: 100%;             /* input always fits container */
+  max-width: 400px;        /* cap input width */
 }
