@@ -3,27 +3,32 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import Typography from '@mui/material/Typography';
 
-const steps = [
-    'Order Summary',
-    'Billing',
-    'Checkout',
-  ];
+const steps = ['Order Summary', 'Billing', 'Checkout'];
 
-const StepperPage = ({activeStep}) => {
+const StepperPage = ({ activeStep }) => {
   return (
-    <>
-    <Box sx={{ width: '100%',marginBottom:3 }}>
+    <Box sx={{ width: '100%', mb: 3 }}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontSize: { xs: '0.7rem', sm: '0.85rem' }, // smaller text on mobile
+                  whiteSpace: 'nowrap', // prevent wrapping
+                }}
+              >
+                {label}
+              </Typography>
+            </StepLabel>
           </Step>
         ))}
       </Stepper>
     </Box>
-    </>
-  )
-}
+  );
+};
 
-export default StepperPage
+export default StepperPage;
